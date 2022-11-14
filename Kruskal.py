@@ -1,4 +1,4 @@
-import numpy as np
+# import numpy as np
 
 
 # Entrer le nombre de sommets
@@ -27,15 +27,19 @@ nbSommet = int(input ('Saisir le nombre de sommet :\n'))
 
 nbVal = nbSommet*nbSommet
 triPoids = []
-poids = []
+Y = [] #poids
+X = [] #arcs
+i=0
 
 print('Saisir votre matrice :\n')
-i=0
+print (nbVal)
 while (i<nbVal):
-    i+=1
     for y in range (0,nbSommet-1):
         x = int(input('Saisir votre sommet\n'))
         if (x>0):
             triPoids.append(x)
-            print (triPoids)
-            
+        else:
+            triPoids.append("L'arc n'existe pas")
+    i+=1
+
+print (triPoids)
