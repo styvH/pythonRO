@@ -8,11 +8,11 @@ import numpy as np
 # Demander la saisie pour la ligne concernée
 
 
-Z = np.array([[0,1,0], [1,0,2], [0,0,0]])
+#Z = np.array([[0,1,0], [1,0,2], [0,0,0]])
 
 
 
-print(Z)
+#print(Z)
 
 # Algo de Kruskal
 # Exo 1 : 
