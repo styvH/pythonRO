@@ -30,16 +30,21 @@ triPoids = []
 Y = [] #poids
 X = [] #arcs
 i=0
-
+ligne=1
 print('Saisir votre matrice :\n')
-print (nbVal)
-while (i<nbVal):
-    for y in range (0,nbSommet-1):
-        x = int(input('Saisir votre sommet\n'))
-        if (x>0):
-            triPoids.append(x)
-        else:
-            triPoids.append("L'arc n'existe pas")
+for x in range(0,nbVal):
+    print("x = "+str(x))
+    print("i = "+str(i))
+    if (i==nbSommet):
+        ligne+=1
+        i=0
+    print("Ligne : "+str(ligne)+"\nSommet: "+str(i+1))
+    sommetSaisi = int(input('Saisir votre sommet\n'))
+    if (sommetSaisi>0):
+        triPoids.append(sommetSaisi)
+        X.append(i)
+    else:
+        triPoids.append("L'arc n'existe pas")
+        X.append("L'arc n'existe pas")
     i+=1
-
-print (triPoids)
+print(triPoids)
