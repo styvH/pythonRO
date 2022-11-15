@@ -8,7 +8,7 @@ import numpy as np
 # Demander la saisie pour la ligne concernée
 
 
-Z = np.array([[0,1,0], [1,0,2], [0,2,0]])
+Z = np.array([[0,7,0,5,0,0,0], [7,0,6,9,7,0,0], [0,6,0,0,4,0,0],[5,9,0,0,11,6,0],[0,7,4,11,0,8,9],[0,0,0,6,8,0,10],[0,0,0,0,9,10,0]])
 
 
 
@@ -48,7 +48,7 @@ print(trie(Z))
 
 # Ex 2 vérifier pas de cycles
 
-Zcycle = np.array([[0,1,1], [1,1,1],[1,1,0]])
+Zcycle = np.array([[0,7,0,5,0,0,0], [7,0,6,9,7,0,0], [0,6,0,0,4,0,0],[5,9,0,0,11,6,0],[0,7,4,11,0,8,9],[0,0,0,6,8,0,10],[0,0,0,0,9,10,0]])
 print(Zcycle)
 print(trie(Zcycle))
 def ACPM():
