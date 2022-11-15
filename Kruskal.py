@@ -36,7 +36,7 @@ def trie(Z):#Obtenir vecteur format 2 sorties : X = les chemins, Y = la taille
                     X += ["{}{}".format(row,col)]
                     Y += [Z[row,col]]
                     used += [row]
-    render = "X = ", X,"Y = ",Y
+    render = [X,Y]
 
     return render
 
@@ -46,10 +46,44 @@ print("Matrice : \n", Z)
 print("Taille : ",Z.shape)
 print(trie(Z))
 
+X, Y = trie(Z)
+print("X = ", X)
+print("Y = ", Y)
+
 # Ex 2 vérifier pas de cycles
 
 Zcycle = np.array([[0,1,1], [1,1,1],[1,1,0]])
 print(Zcycle)
 print(trie(Zcycle))
+print("X = ", X)
+print("Y = ", Y)
+
 def ACPM():
     return 0
+
+
+def Kruskal(Z):
+    lesSommets = recupSommets(Z)
+    nbSommets = len(lesSommets)
+    X, Y = trie(Z)
+
+    poids = 0
+    return poids
+
+
+print(trie(Z)[0][0])
+
+s0, s2 = trie(Z)[0][0]
+
+
+print(s2)
+
+def recupSommets(Z):
+    sommets = []
+    for i in range(len(trie(Z))):
+        s1, s2 = trie(Z)[0][i]
+        if s1 not in sommets:
+            sommets += s1
+        if s2 not in sommets:
+            sommets += s2
+    return sommets
