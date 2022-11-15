@@ -23,34 +23,33 @@ Z = np.array([[0,1,0], [1,0,2], [0,2,0]])
 
 
 #Ex 1 Trie Z
-def trie(Z):
-#Obtenir vecteur format 2 sorties : X = les chemins, Y = la taille
+def trie(Z):#Obtenir vecteur format 2 sorties : X = les chemins, Y = la taille
+
     nbRow, nbCol = Z.shape #Récupérer la taille de la matrice, soit le nombre de sommets
-    print(nbRow)
-    print(nbCol)
     X = []
     Y = []
     used = []
     for row in range(0,nbRow):
         for col in range(0,nbCol):
-            if Z[row,col] != 0 and row not in used:
-                print("Ligne : ",row)
-                print("Colonne : ", col)
-                X += ["{}{}".format(row,col)]
-                Y += [Z[row,col]]
-                used+= [row]
-                used+=[col]
+            if Z[row,col] != 0 and col not in used: # Si la valeur n'est pas nulle, s'il y a un arc
+                if row != col: # Si sommet de départ n'est pas sommet d'arrivé
+                    X += ["{}{}".format(row,col)]
+                    Y += [Z[row,col]]
+                    used += [row]
     render = "X = ", X,"Y = ",Y
 
     return render
 
 
 
-print("Matrice : ", Z)
+print("Matrice : \n", Z)
 print("Taille : ",Z.shape)
 print(trie(Z))
-nbRow, nbCol = Z.shape
-print(nbRow)
-print(nbCol)
 
 # Ex 2 vérifier pas de cycles
+
+Zcycle = np.array([[0,1,1], [1,1,1],[1,1,0]])
+print(Zcycle)
+print(trie(Zcycle))
+def ACPM():
+    return 0
