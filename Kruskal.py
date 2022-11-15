@@ -1,4 +1,4 @@
-# import numpy as np
+import numpy as np
 
 
 # Entrer le nombre de sommets
@@ -8,7 +8,7 @@
 # Demander la saisie pour la ligne concernée
 
 
-#Z = np.array([[0,1,0], [1,0,2], [0,0,0]])
+Z = np.array([[0,1,0], [1,0,2], [0,2,0]])
 
 
 
@@ -23,6 +23,7 @@
 
 # Z est la matrice d'incidence concernée
 
+"""""
 nbSommet = int(input ('Saisir le nombre de sommet :\n'))
 
 nbVal = nbSommet*nbSommet
@@ -48,3 +49,40 @@ for x in range(0,nbVal):
         X.append("L'arc n'existe pas")
     i+=1
 print(triPoids)
+
+nbSommet = int(input ('Saisir le nombre de sommet :\n'))
+i = 0
+while (0 < nbSommet**2):
+    
+    a = int(input("Saisir valeur sommet"))
+    i+=1
+"""""
+#Ex 1 Trie Z
+def trie(Z):
+#Obtenir vecteur format 2 sorties : X = les chemins, Y = la taille
+    nbRow, nbCol = Z.shape #Récupérer la taille de la matrice, soit le nombre de sommets
+    print(nbRow)
+    print(nbCol)
+    X = []
+    Y = []
+    for row in range(0,nbRow):
+        for col in range(0,nbCol):
+            if Z[row,col] != 0:
+                print("Ligne : ",row)
+                print("Colonne : ", col)
+                X += ["{}{}".format(row,col)]
+                Y += [Z[row,col]]
+    render = "X = ", X,"Y = ",Y
+
+    return render
+
+
+
+print("Matrice : ", Z)
+print("Taille : ",Z.shape)
+print(trie(Z))
+nbRow, nbCol = Z.shape
+print(nbRow)
+print(nbCol)
+
+# Ex 2 vérifier pas de cycles
