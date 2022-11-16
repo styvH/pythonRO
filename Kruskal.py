@@ -51,5 +51,7 @@ print(trie(Z))
 Zcycle = np.array([[0,7,0,5,0,0,0], [7,0,6,9,7,0,0], [0,6,0,0,4,0,0],[5,9,0,0,11,6,0],[0,7,4,11,0,8,9],[0,0,0,6,8,0,10],[0,0,0,0,9,10,0]])
 print(Zcycle)
 print(trie(Zcycle))
-def ACPM():
+
+# ACM ? Arbre couvrant minimum
+def ACM():
     return 0
