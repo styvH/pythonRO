@@ -7,8 +7,10 @@ import numpy as np
 
 # Demander la saisie pour la ligne concernée
 
+Zbase = np.array([[0,5,0], [1,0,2], [0,2,0]])
 
 Z = np.array([[0,7,0,5,0,0,0], [7,0,6,9,7,0,0], [0,6,0,0,4,0,0],[5,9,0,0,11,6,0],[0,7,4,11,0,8,9],[0,0,0,6,8,0,10],[0,0,0,0,9,10,0]])
+
 
 
 
@@ -39,8 +41,6 @@ def trie(Z):#Obtenir vecteur format 2 sorties : X = les chemins, Y = la taille
                     X += ["{}{}".format(row,col)]
                     Y += [Z[row,col]]
                     used += [row]
-    print("Valeurs avant trie :")
-    print ("X = ", X, "Y = ", Y,"\n")
     val = 0
     triesize = len(Y)
     while ( len(trie) != triesize ):
@@ -63,9 +63,7 @@ def trie(Z):#Obtenir vecteur format 2 sorties : X = les chemins, Y = la taille
 
     X = triearc
     Y = trie
-
-    print("Valeurs après trie : \n")
-    render = "X = ", X, "Y = ", Y
+    render = X,Y
 
 
     return render
@@ -89,3 +87,79 @@ print(trie(Z))
 def ACM():
 
     return 0
+
+
+import numpy as np
+
+
+# Entrer le nombre de sommets
+
+# Tant que toutes les valeurs ne sont pas entrées
+
+# Demander la saisie pour la ligne concernée
+
+
+
+#print(Z)
+
+# Algo de Kruskal
+# Exo 1 :
+
+# Saisir une matrice et réordonné chaques arc par ordre croissant de poids
+
+# Function (X,Y) = Trie(Z)
+
+
+#Ex 1 Trie Z
+
+
+
+print("Matrice : \n", Z)
+print("Taille : ",Z.shape)
+print(trie(Z))
+
+X, Y = trie(Z)
+print("X = ", X)
+print("Y = ", Y)
+
+# Ex 2 vérifier pas de cycles
+
+Zcycle = np.array([[0,1,1], [1,1,1],[1,1,0]])
+print(Zcycle)
+print(trie(Zcycle))
+print("X = ", X)
+print("Y = ", Y)
+
+
+def Kruskal(Z):
+    lesSommets = recupSommets(Z)
+    nbSommets = len(lesSommets)
+    #X, Y = trie(Z)
+
+    poids = 0
+    return poids
+
+
+print(trie(Z)[0][0])
+
+s0, s2 = trie(Z)[0][0]
+
+
+print(s2)
+
+def recupSommets(Z):
+    sommets = []
+    for i in range(len(trie(Z))):
+        s1, s2 = trie(Z)[0][i]
+        if s1 not in sommets:
+            sommets += s1
+        if s2 not in sommets:
+            sommets += s2
+    return sommets
+
+
+print(trie(Zbase))
+print(trie(Zbase)[0][0])
+
+s0, s2 = trie(Zbase)[0][0]
+print(s2)
