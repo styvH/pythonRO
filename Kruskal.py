@@ -147,9 +147,9 @@ s0, s2 = trie(Z)[0][0]
 
 print(s2)
 
-def recupSommets(Z):
+def listeSommets(Z):
     sommets = []
-    for i in range(len(trie(Z))):
+    for i in range(len(trie(Z)[0])):
         s1, s2 = trie(Z)[0][i]
         if s1 not in sommets:
             sommets += s1
@@ -164,4 +164,4 @@ print(trie(Zbase)[0][0])
 s0, s2 = trie(Zbase)[0][0]
 print(s2)
 
-print(recupSommets(Z))
+print(listeSommets(Z))
