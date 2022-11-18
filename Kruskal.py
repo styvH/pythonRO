@@ -29,6 +29,9 @@ def trie(Z):#Obtenir vecteur format 2 sorties : X = les chemins, Y = la taille
     X = []
     Y = []
     used = []
+    trie = []
+    triearc = []
+    i = 0
     for row in range(0,nbRow):
         for col in range(0,nbCol):
             if Z[row,col] != 0 and col not in used: # Si la valeur n'est pas nulle, s'il y a un arc
@@ -36,7 +39,34 @@ def trie(Z):#Obtenir vecteur format 2 sorties : X = les chemins, Y = la taille
                     X += ["{}{}".format(row,col)]
                     Y += [Z[row,col]]
                     used += [row]
-    render = "X = ", X,"Y = ",Y
+    print("Valeurs avant trie :")
+    print ("X = ", X, "Y = ", Y,"\n")
+    val = 0
+    triesize = len(Y)
+    while ( len(trie) != triesize ):
+        i = 0
+        valpos = 0
+        for values in Y:
+            if i == 0:
+                val = Y[i]
+                valpos = 0
+            else:
+                if Y[i] < val:
+                    val = Y[i]
+                    valpos = i
+            i += 1
+        trie.append(val)
+        triearc.append(X[valpos])
+        X.pop(valpos)
+        Y.pop(valpos)
+
+
+    X = triearc
+    Y = trie
+
+    print("Valeurs après trie : \n")
+    render = "X = ", X, "Y = ", Y
+
 
     return render
 
@@ -48,10 +78,14 @@ print(trie(Z))
 
 # Ex 2 vérifier pas de cycles
 
-Zcycle = np.array([[0,7,0,5,0,0,0], [7,0,6,9,7,0,0], [0,6,0,0,4,0,0],[5,9,0,0,11,6,0],[0,7,4,11,0,8,9],[0,0,0,6,8,0,10],[0,0,0,0,9,10,0]])
-print(Zcycle)
-print(trie(Zcycle))
+#Zcycle = np.array([[0,7,0,5,0,0,0], [7,0,6,9,7,0,0], [0,6,0,0,4,0,0],[5,9,0,0,11,6,0],[0,7,4,11,0,8,9],[0,0,0,6,8,0,10],[0,0,0,0,9,10,0]])
+#print(Zcycle)
+#print(trie(Zcycle))
+
 
 # ACM ? Arbre couvrant minimum
+# Arbre qui passe par l'ensemble des sommets avec un poids minimum
+
 def ACM():
+
     return 0
