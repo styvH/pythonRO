@@ -163,3 +163,5 @@ print(trie(Zbase)[0][0])
 
 s0, s2 = trie(Zbase)[0][0]
 print(s2)
+
+print(recupSommets(Z))
