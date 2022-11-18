@@ -132,7 +132,7 @@ print("Y = ", Y)
 
 
 def Kruskal(Z):
-    lesSommets = recupSommets(Z)
+    lesSommets = listeSommets(Z)
     nbSommets = len(lesSommets)
     #X, Y = trie(Z)
 
@@ -165,3 +165,16 @@ s0, s2 = trie(Zbase)[0][0]
 print(s2)
 
 print(listeSommets(Z))
+
+def delArcs(Z):
+    used = []
+    print(trie(Z))
+    arcs = []
+    arcs += trie(Z)[0][0],trie(Z)[1][0]
+    s1, s2 = trie(Z)[0][0]
+    used += s1
+    print(arcs)
+    #supprimer tout les s1 de Z
+
+
+delArcs(Z)
