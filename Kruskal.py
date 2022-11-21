@@ -66,33 +66,12 @@ def trie(Z):  # Obtenir vecteur format 2 sorties : X = les chemins, Y = la taill
     return render
 
 
-print("Matrice : \n", Z)
-print("Taille : ", Z.shape)
-print(trie(Z))
 
 # Ex 2 vérifier pas de cycles
-
-
-print("Matrice : \n", Z)
-print("Taille : ", Z.shape)
-print(trie(Z))  # Affichage du tri
-
-X, Y = trie(Z)
-print("X = ", X)
-print("Y = ", Y)
-
-# Ex 2 vérifier pas de cycles
-
-Zcycle = np.array([[0, 1, 1], [1, 1, 1], [1, 1, 0]])
-print(Zcycle)
-print(trie(Zcycle))
-print("X = ", X)
-print("Y = ", Y)
-
 
 def ExistChemin(MatriceAdjacente, posA, posB):  # s'il existe un chemin allant de A vers B, retourne vrai sinon faux
     # Pour chaque sommet adjacent à 'A',
-    sAdj = [] # sAdj = liste des sommets adjacents pouvant créer un chemin
+    sAdj = []  # sAdj = liste des sommets adjacents pouvant créer un chemin
     n = 0
     for i in MatriceAdjacente[posA]:
 
@@ -129,7 +108,7 @@ def ExistChemin(MatriceAdjacente, posA, posB):  # s'il existe un chemin allant d
 
 def detectCycle(matrice):
     for i in range(len(matrice)): #Pour chaque valeur sommet, vérifier s'il existe un cycle
-        if ExistChemin(matrice, int(i), int(i)):  # S'il existe un chemin allant de i vers i, il s'agit d'un cycle
+        if ExistChemin(matrice, i, i):  # S'il existe un chemin allant de i vers i, il s'agit d'un cycle
             return True
     return False
 
@@ -139,8 +118,7 @@ def detectCycle(matrice):
 
 def ACPM(Z):
     arcs = []
-    M = np.zeros((len(Z), len(Z)))  # Création matrice M nulle qui sera la matrice d'adjacente du graphe
-
+    M = np.zeros(Z.shape)  # Création matrice M nulle qui sera la matrice d'adjacente du graphe
     # Démarrer boucle
     for i in range(len(trie(Z)[0])):
         x = trie(Z)[0][i]  # arc
@@ -148,85 +126,26 @@ def ACPM(Z):
 
         s1, s2 = trie(Z)[0][i]
         # Ajouter à la matrice d'adjacente
+
         M[int(s1)][int(s2)] = 1
         M[int(s2)][int(s1)] = 1
-        # Verifier cycle
+
+        # Verifier cycle \\ Erreur detection de cycle toujours positive
         if not detectCycle(M):  # S'il n'y a pas de cycle, on ajoute et on continue
             arcs += [[x,y]]
-        else:   # S'il un cycle viens d'être ajouté, le retirer de la matrice d'adjacente
+
+        else:   # S'il la chaine ajoutée crée un cycle, le retirer de la matrice d'adjacente sans l'ajouter aux arcs
             M[int(s1)][int(s2)] = 0
             M[int(s2)][int(s1)] = 0
+
 
     return arcs
 
 
 testCycle = np.array([[0, 3, 0, 0, 1], [3, 0, 5, 0, 4], [0, 5, 0, 2, 6], [0, 0, 2, 0, 7], [1, 4, 6, 7, 0]])
 
-print("_____________________________")
-
-print(testCycle)
-
-print("Trie : ", trie(testCycle))
-
-print(ACPM(testCycle))
-
-print("_____________________________")
-
-testCycle = np.array([[0, 2, 0, 0], [2, 0, 3, 0], [0, 0, 0, 1], [0, 3, 1, 0]])
-
-print(testCycle)
-print("Trie : ", trie(testCycle))
-print(ACPM(testCycle))
-
-print(Z)
-
-print(ACPM(Z))
-
-print("________________")
-
-
-
-print(ACPM(Z))
-print(trie(Z))
-print(Z[2][2])
-
-
 
 testCycle = np.array([[0, 1, 1, 0], [0, 0, 0, 0], [0, 0, 0, 1], [0, 3, 1, 0]])
-A = 0
-B = 1
-C = 2
-D = 3
 
-print(testCycle)
-
-
-
-print(ExistChemin(testCycle,A,D))
-
-
-print(ACPM(Z))
 print(trie(Z))
-
-
-testCycle = np.array([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
-A = 0
-B = 1
-C = 2
-D = 3
-
-s1 = '03'
-
-a, b = s1
-
-print(int(a))
-
-testCycle[int(a)][int(b)] = 1
-testCycle[int(b)][int(a)] = 1
-
-testCycle[int(2)][int(1)] = 1
-testCycle[int(1)][int(2)] = 1
-print(testCycle)
-print(ExistChemin(testCycle,int(b),2))
-
 print(ACPM(Z))
