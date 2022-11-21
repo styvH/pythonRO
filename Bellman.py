@@ -16,14 +16,8 @@ def initBell(matrice, sommetDepart):
 
     bellman[0] = np.ones(len(matrice)) * np.inf
 
-    j = 0
     bellman[0][sommetDepart] = 0
-    bellman[1] = bellman[0].copy()
-    for i in matrice[sommetDepart]:
-        if i != 0:
-            bellman[1][j] = i
-        j += 1
-    i = 2
+
     return bellman
 
 
@@ -39,7 +33,7 @@ afficherBellman(bellman)
 def Bellman(matrice, sommetDepart):
     bellman = initBell(matrice, sommetDepart)
     i = len(bellman)
-    while i < 10:
+    while i < 100:  # Boucle Normalement infini, maximisé à 100 pour l'exercice
         bellman[i] = bellman[i - 1].copy()
         for bellmanColonne in range(len(bellman[0])):
 
