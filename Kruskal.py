@@ -120,16 +120,16 @@ def ACPM(Z):
     arcs = []
     M = np.zeros(Z.shape)  # Création matrice M nulle qui sera la matrice d'adjacente du graphe
     # Démarrer boucle
-    for i in range(len(trie(Z)[0])):
+    for i in range(len(trie(Z)[0])):  # Dans l'ordre du tri
         x = trie(Z)[0][i]  # arc
         y = trie(Z)[1][i]  # taille
 
         s1, s2 = trie(Z)[0][i]
         # Ajouter à la matrice d'adjacente
 
-        M[int(s1)][int(s2)] = 1
-        M[int(s2)][int(s1)] = 1
-
+        M[int(s1)][int(s2)] = 1  # Modification - modifier 1 à la position correspondante
+        M[int(s2)][int(s1)] = 1  # Modification
+        print(M)
         # Verifier cycle \\ Erreur detection de cycle toujours positive
         if not detectCycle(M):  # S'il n'y a pas de cycle, on ajoute et on continue
             arcs += [[x,y]]
@@ -149,3 +149,6 @@ testCycle = np.array([[0, 1, 1, 0], [0, 0, 0, 0], [0, 0, 0, 1], [0, 3, 1, 0]])
 
 print(trie(Z))
 print(ACPM(Z))
+
+print(trie(testCycle))
+print(ACPM(testCycle))
