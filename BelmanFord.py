@@ -2,7 +2,7 @@
 #Barnabot Edwin
 #Lorterville Styvan
 #Duhamel Jorane
-# Musu Mathéo
+# Musu Mattéo
 import numpy as np
 import math
 # Matrice Exemple 1 du cours
