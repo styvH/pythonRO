@@ -131,6 +131,7 @@ def ACPM(Z):
         M[int(s2)][int(s1)] = 1  # Modification
         print(M)
         # Verifier cycle \\ Erreur detection de cycle toujours positive
+        print(detectCycle(M))
         if not detectCycle(M):  # S'il n'y a pas de cycle, on ajoute et on continue
             arcs += [[x,y]]
 
@@ -152,3 +153,10 @@ print(ACPM(Z))
 
 print(trie(testCycle))
 print(ACPM(testCycle))
+
+
+M = np.zeros(Z.shape)
+M[2][1] = 1  # Modification - modifier 1 à la position correspondante
+M[2][1] = 1
+
+print(detectCycle(M))
