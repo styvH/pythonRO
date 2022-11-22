@@ -20,15 +20,14 @@ M = np.array([[0, 3, 4, 0, 0, 0],
 def initBell(matrice, sommetDepart):
     bellman = {}
     bellman[0] = np.ones(len(matrice)) * np.inf
-    bellman[0][sommetDepart] = 0
+    print(M)
+    bellman[0][sommetDepart] = int(input("Choisissez le point de départ pour le graphe :"))
+
     return bellman
 
 def afficherBellman(bellmanTab):
     for key in bellmanTab.keys():
-        if type(key) == type(0):
-            print("Etape", key, ":", bellmanTab[key])
-        else:
-            print(key, ":", bellmanTab[key])
+        print("Etape", key, ":", bellmanTab[key])
 
 
 bellman = initBell(M, 0)
@@ -36,7 +35,6 @@ afficherBellman(bellman)
 
 def Bellman(matrice, sommetDepart):
     bellman = initBell(matrice, sommetDepart)
-    critique = []
     i = len(bellman)
     while i < 100:  # Boucle Normalement infini, maximisé à 100 pour l'exercice
         bellman[i] = bellman[i - 1].copy()
@@ -47,13 +45,11 @@ def Bellman(matrice, sommetDepart):
                         possibleVal = matrice[bellmanColonne][matriceCol] + bellman[i - 1][bellmanColonne] # Nouvelle valeur possible
                         if possibleVal < bellman[i - 1][matriceCol]:
                             bellman[i][matriceCol] = possibleVal
-                            critique.append("")
 
         if np.array_equal(bellman[i], bellman[i - 1]):  # Si la ligne actuelle est égale à la ligne précédente, fin de l'algo
             break
 
         i += 1
-    bellman["critique"] = critique
     return bellman
 
 bellmanFin = Bellman(M, 0)
