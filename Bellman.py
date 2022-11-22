@@ -17,11 +17,16 @@ M = np.array([[0, 3, 4, 0, 0, 0],
 # Étape 1 : Initialiser un tableau de taille indéfini qui récupèrera la trace des étapes de bellman
 
 
-def initBell(matrice, sommetDepart):
+def initBell(matrice):
     bellman = {}
     bellman[0] = np.ones(len(matrice)) * np.inf
-    print(M)
-    bellman[0][sommetDepart] = int(input("Choisissez le point de départ pour le graphe :"))
+    print(matrice)
+    depart = int(input("Choisissez le point de départ pour le graphe :"))
+    if depart not in range(len(bellman[0])):
+        print("Vérifiez la valeur (Entrez un chiffre entre 0 et {})".format(len(bellman[0])))
+        initBell(matrice)
+    else:
+        bellman[0][depart] = depart
 
     return bellman
 
@@ -30,11 +35,11 @@ def afficherBellman(bellmanTab):
         print("Etape", key, ":", bellmanTab[key])
 
 
-bellman = initBell(M, 0)
+bellman = initBell(M)
 afficherBellman(bellman)
 
-def Bellman(matrice, sommetDepart):
-    bellman = initBell(matrice, sommetDepart)
+def Bellman(matrice):
+    bellman = initBell(matrice)
     i = len(bellman)
     while i < 100:  # Boucle Normalement infini, maximisé à 100 pour l'exercice
         bellman[i] = bellman[i - 1].copy()
@@ -52,7 +57,7 @@ def Bellman(matrice, sommetDepart):
         i += 1
     return bellman
 
-bellmanFin = Bellman(M, 0)
+bellmanFin = Bellman(M)
 print("___________________________________")
 afficherBellman(bellmanFin)
 
@@ -65,6 +70,6 @@ J = np.array([
     [-2,0,0,7,0]
 ])
 
-bellmanJ = Bellman(J, 0)
+bellmanJ = Bellman(J)
 print("___________________________________")
 afficherBellman(bellmanJ)
