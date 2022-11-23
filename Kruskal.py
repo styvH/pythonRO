@@ -1,4 +1,12 @@
+#Groupe :
+#Barnabot Edwin
+#Loterville Styvan
+#Duhamel Jorane
+# Musu Mattéo
+# Le trie des poids fonctionne
+# Notre fonction de détection des cycles ne fonctionne pas
 import numpy as np
+
 
 # Entrer le nombre de sommets
 
@@ -6,7 +14,7 @@ import numpy as np
 
 # Demander la saisie pour la ligne concernée
 
-Zbase = np.array([[0, 5, 0], [1, 0, 2], [0, 2, 0]])
+#Zbase = np.array([[0, 5, 0], [1, 0, 2], [0, 2, 0]])
 
 Z = np.array([[0, 7, 0, 5, 0, 0, 0], [7, 0, 6, 9, 7, 0, 0], [0, 6, 0, 0, 4, 0, 0], [5, 9, 0, 0, 11, 6, 0],
               [0, 7, 4, 11, 0, 8, 9], [0, 0, 0, 6, 8, 0, 10], [0, 0, 0, 0, 9, 10, 0]])
@@ -61,7 +69,7 @@ def trie(Z):  # Obtenir vecteur format 2 sorties : X = les chemins, Y = la taill
 
     X = triearc
     Y = trie
-    render = X, Y
+    render = "Sommets (X) :"+str(X)+ "\n Poids  (Y) : " +str(Y)
 
     return render
 
@@ -148,11 +156,13 @@ testCycle = np.array([[0, 3, 0, 0, 1], [3, 0, 5, 0, 4], [0, 5, 0, 2, 6], [0, 0, 
 
 testCycle = np.array([[0, 1, 1, 0], [0, 0, 0, 0], [0, 0, 0, 1], [0, 3, 1, 0]])
 
-print(trie(Z))
-print(ACPM(Z))
+print("Matrice d'incidence : ")
+print(Z)
+print("\n",trie(Z))
+#print(ACPM(Z))
 
-print(trie(testCycle))
-print(ACPM(testCycle))
+#print(trie(testCycle))
+#print(ACPM(testCycle))
 
 
 M = np.zeros(Z.shape)
